@@ -33,9 +33,11 @@ The database password for the provided user above.
 
 #### Query
 
-The query you want to execute and return data for.  Note that this integration only supports running a single query and as a result you will likely want to send only a single entity type to the query.  When constructing your query you can fill in the 
+The query you want to execute and return data for.  
+
+This integration only supports running a single query for any registered entity types.  As a result you will likely want to send only a single entity type to the query using the "Manage Integration Data" option on the integrations page. When constructing your query you can substitute the entity value into the query using the special string `$1`.
  
-For example, if you set the integration to only receive IPv4 addresses then you set the Query option to the following:
+For example, if you set the integration to only receive IPv4 addresses then you can set the Query option to the following:
  
 ```postgresql
  SELECT * FROM data WHERE ip = $1
@@ -54,6 +56,10 @@ SELECT hostname as tag1, location as tag2 WHERE ip = $1
 ```
 
 In the above example, the value of hostname and location will be set as tags in the Polarity Overlay window.  Any other returned columns will be displayed as details in the overlay window details block when clicking on the entity and expanding it.  The default display is a table.
+
+## Installation Instructions
+
+Installation instructions for integrations are provided on the [PolarityIO GitHub Page](https://polarityio.github.io/).
  
 ## Polarity
 
