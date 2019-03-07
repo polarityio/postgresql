@@ -82,7 +82,7 @@ module.exports = {
             "key": "port",
             "name": "Database Port",
             "description": "The port your database instance is listening on",
-            "default": "5432",
+            "default": 5432,
             "type": "number",
             "userCanEdit": false,
             "adminOnly": true
