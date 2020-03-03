@@ -72,7 +72,7 @@ module.exports = {
         {
             "key": "host",
             "name": "Database Host",
-            "description": "The hostname of the server hosting your MySQL Server instance",
+            "description": "The hostname of the server hosting your PostgreSQL Server instance",
             "default": "",
             "type": "text",
             "userCanEdit": false,
