@@ -1,7 +1,7 @@
 {
   "main": "./integration.js",
   "name": "postgresql",
-  "version": "3.0.0",
+  "version": "3.0.1-beta",
   "private": true,
   "dependencies": {
     "pg": "^7.18.2",
