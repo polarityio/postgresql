@@ -1,0 +1,94 @@
+{
+  "name": "PostgreSQL",
+  "acronym": "PG",
+  "description": "SQL Lookup for PostgreSQL databases",
+  "entityTypes": [
+    "*"
+  ],
+  "styles": [
+    "./styles/postgresql.less"
+  ],
+  "block": {
+    "component": {
+      "file": "./components/postgresql-block.js"
+    },
+    "template": {
+      "file": "./templates/postgresql-block.hbs"
+    }
+  },
+  "summary": {
+    "component": {
+      "file": "./components/postgresql-summary.js"
+    },
+    "template": {
+      "file": "./templates/postgresql-summary.hbs"
+    }
+  },
+  "request": {
+    "cert": "",
+    "key": "",
+    "passphrase": "",
+    "ca": "",
+    "proxy": "",
+    "rejectUnauthorized": true
+  },
+  "logging": {
+    "level": "info"
+  },
+  "options": [
+    {
+      "key": "host",
+      "name": "Database Host",
+      "description": "The hostname of the server hosting your PostgreSQL Server instance",
+      "default": "",
+      "type": "text",
+      "userCanEdit": false,
+      "adminOnly": true
+    },
+    {
+      "key": "port",
+      "name": "Database Port",
+      "description": "The port your database instance is listening on",
+      "default": 5432,
+      "type": "number",
+      "userCanEdit": false,
+      "adminOnly": true
+    },
+    {
+      "key": "database",
+      "name": "Database Name",
+      "description": "The name of the database you are connecting to",
+      "default": "",
+      "type": "text",
+      "userCanEdit": false,
+      "adminOnly": true
+    },
+    {
+      "key": "user",
+      "name": "User",
+      "description": "The database user you are connecting as",
+      "default": "",
+      "type": "text",
+      "userCanEdit": false,
+      "adminOnly": true
+    },
+    {
+      "key": "password",
+      "name": "Users Password",
+      "description": "The password of the user you are authenticating as",
+      "default": "",
+      "type": "password",
+      "userCanEdit": true,
+      "adminOnly": false
+    },
+    {
+      "key": "query",
+      "name": "Query",
+      "description": "The query you want to execute and return data for.  Replace the entity with \"$1\".  (e.g., SELECT * FROM data WHERE ip = $1).  Columns that appear as tags should be prefixed with \"tag\" (e.f., SELECT id as tag1, severity as tag2 FROM data WHERE ip = $1)",
+      "default": "",
+      "type": "text",
+      "userCanEdit": true,
+      "adminOnly": false
+    }
+  ]
+}
