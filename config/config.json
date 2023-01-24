@@ -1,13 +1,10 @@
 {
   "name": "PostgreSQL",
   "acronym": "PG",
+  "defaultColor": "light-blue",
   "description": "SQL Lookup for PostgreSQL databases",
-  "entityTypes": [
-    "*"
-  ],
-  "styles": [
-    "./styles/postgresql.less"
-  ],
+  "entityTypes": ["*"],
+  "styles": ["./styles/postgresql.less"],
   "block": {
     "component": {
       "file": "./components/postgresql-block.js"
