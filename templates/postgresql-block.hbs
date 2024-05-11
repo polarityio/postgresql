@@ -1,1 +1,21 @@
-{{object-to-table block.data.details}}
+{{#if details.formatted}}
+  {{#each details.formatted as | row index |}}
+    <h1 class="p-title">{{fa-icon icon="file-alt" fixedWidth=true}} Result #{{inc index}}</h1>
+    {{#each row as | column |}}
+      <div>
+        <span class="p-key">{{column.label}}:</span>
+        <span class="p-value">
+          {{#if (eq column.type "link")}}
+            <a href="{{column.value}}" class="p-link">{{column.value}} {{fa-icon icon="external-link" fixedWidth=true class="external-link-icon"}}</a>
+          {{else if (eq column.type "null")}}
+            <span class="null-value">{{column.value}}</span>
+          {{else}}
+            {{column.value}}
+          {{/if}}
+        </span>
+      </div>
+    {{/each}}
+  {{/each}}
+{{else}}
+  {{object-to-table details.raw}}
+{{/if}}
