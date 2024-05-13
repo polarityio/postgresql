@@ -24,7 +24,7 @@ module.exports = {
    * @optional
    */
   description: 'SQL Lookup for PostgreSQL databases',
-  entityTypes: ['*'],
+  entityTypes: ['IPv4', 'IPv6', 'url', 'domain', 'cve', 'MD5', 'SHA1', 'SHA256', 'email'],
   /**
    * An array of style files (css or less) that will be included for your integration. Any styles specified in
    * the below files can be used in your custom template.
@@ -49,20 +49,12 @@ module.exports = {
       file: './templates/postgresql-block.hbs'
     }
   },
-  summary: {
-    component: {
-      file: './components/postgresql-summary.js'
-    },
-    template: {
-      file: './templates/postgresql-summary.hbs'
-    }
-  },
   request: {
     cert: '',
     key: '',
     passphrase: '',
     ca: '',
-    proxy: ""
+    proxy: ''
   },
   logging: {
     level: 'info' //trace, debug, info, warn, error, fatal
@@ -117,8 +109,8 @@ module.exports = {
       description: 'The password of the user you are authenticating as',
       default: '',
       type: 'password',
-      userCanEdit: true,
-      adminOnly: false
+      userCanEdit: false,
+      adminOnly: true
     },
     {
       key: 'query',
@@ -127,8 +119,37 @@ module.exports = {
         'The query you want to execute and return data for.  Replace the entity with "$1".  (e.g., SELECT * FROM data WHERE ip = $1).  Columns that appear as tags should be prefixed with "tag" (e.f., SELECT id as tag1, severity as tag2 FROM data WHERE ip = $1)',
       default: '',
       type: 'text',
-      userCanEdit: true,
-      adminOnly: false
+      userCanEdit: false,
+      adminOnly: true
+    },
+    {
+      key: 'summaryAttributes',
+      name: 'Summary Columns',
+      description:
+        'Comma delimited list of columns names to include as part of the summary.  If left blank, a result count will be shown. Columns must be returned by your SQL query to be displayed.  You can optionally set a label to be displayed instead of the column name by appending a colon followed by the label (i.e., "<column>:<label>"). You can append an optional column type after the label (i.e., "<column>:<label>:<type>"). Supported types are "link" which will display the column as a clickable URL. Clear cached results after making changes to this option if you would like to see the changes immediately.',
+      default: '',
+      type: 'text',
+      userCanEdit: false,
+      adminOnly: true
+    },
+    {
+      key: 'maxSummaryRows',
+      name: 'Max Summary Rows',
+      description: 'The maximum number of return rows to provide summary tags for.  A count of remaining records will be shown for any rows above the max.  This option has no effect if the "Summary Columns" option is not provided.',
+      default: 1,
+      type: 'number',
+      userCanEdit: false,
+      adminOnly: true
+    },
+    {
+      key: 'detailAttributes',
+      name: 'Detail Columns',
+      description:
+        'Comma delimited list of columns names to include as part of the details.  If left blank, all columns will be shown.  Columns must be returned by your SQL query to be displayed.  You can optionally set a label to be displayed instead of the column name by appending a colon followed by the label (i.e., "<column>:<label>"). You can append an optional column type after the label (i.e., "<column>:<label>:<type>"). Supported types are "link" which will display the column as a clickable URL. Clear cached results after making changes to this option if you would like to see the changes immediately.',
+      default: '',
+      type: 'text',
+      userCanEdit: false,
+      adminOnly: true
     }
   ]
 };
