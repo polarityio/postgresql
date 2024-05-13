@@ -51,7 +51,7 @@ SELECT * FROM data WHERE ip = '127.0.0.1'
 
 #### Summary Columns
 
-Comma delimited list of columns names to include as part of the summary.  If left blank, a result count will be shown. Columns must be returned by your SQL query to be displayed.  You can optionally set a label to be displayed instead of the column name by appending a colon followed by the label (i.e., "<column>:<label>"). You can append an optional column type after the label (i.e., "<column>:<label>:<type>"). Supported types are "link" which will display the column as a clickable URL. Clear cached results after making changes to this option if you would like to see the changes immediately.
+Comma delimited list of columns names to include as part of the summary.  If left blank, a result count will be shown. Columns must be returned by your SQL query to be displayed.  You can optionally set a label to be displayed instead of the column name by appending a colon followed by the label (i.e., "&lt;column&gt;:&lt;label&gt;"). You can append an optional column type after the label (i.e., "&lt;column&gt;:&lt;label&gt;:&lt;type&gt;"). Supported types are "link" which will display the column as a clickable URL. Clear cached results after making changes to this option if you would like to see the changes immediately.
 
 #### Max Summary Rows
 
@@ -59,7 +59,34 @@ The maximum number of return rows to provide summary tags for.  A count of remai
 
 #### Detail Columns
 
-Comma delimited list of columns names to include as part of the details.  If left blank, all columns will be shown.  Columns must be returned by your SQL query to be displayed.  You can optionally set a label to be displayed instead of the column name by appending a colon followed by the label (i.e., "<column>:<label>"). You can append an optional column type after the label (i.e., "<column>:<label>:<type>"). Supported types are "link" which will display the column as a clickable URL. Clear cached results after making changes to this option if you would like to see the changes immediately.
+Comma delimited list of columns names to include as part of the details.  If left blank, all columns will be shown.  Columns must be returned by your SQL query to be displayed.  You can optionally set a label to be displayed instead of the column name by appending a colon followed by the label (i.e., "&lt;column&gt;:&lt;label&gt;"). You can append an optional column type after the label (i.e., "&lt;column&gt;:&lt;label&gt;:&lt;type&gt;"). Supported types are "link" which will display the column as a clickable URL. Clear cached results after making changes to this option if you would like to see the changes immediately.
+
+As an example, if you have the following SQL query:
+
+```
+SELECT col1, col2, col3, col4 FROM proxy WHERE col1=$1 LIMIT 10 
+```
+
+You could map these columns to user-readable labels as follows:
+
+```
+col1:Src IP, col2: Dst IP, col3: Source Port, col4: Dest Port
+```
+
+The Overlay Window would then display the data like this:
+
+```
+Src IP: 10.0.0.45
+Dst IP: 8.8.8.8
+Src Port: 43543
+Dest Port: 53
+```
+
+If you had a query that returns a URL that you could like to be clickable, you could specify that column using the `link` type as follows:
+
+```
+website:Click Me:link
+```
 
 ## Installation Instructions
 
