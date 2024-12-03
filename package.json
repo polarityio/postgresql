@@ -1,10 +1,10 @@
 {
   "name": "postgresql",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "main": "./integration.js",
   "private": true,
   "dependencies": {
-    "async": "^3.2.5",
-    "pg": "^8.11.5"
+    "async": "^3.2.6",
+    "pg": "^8.13.1"
   }
 }
