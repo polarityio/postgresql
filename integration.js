@@ -214,11 +214,26 @@ function validateStringOption(errors, options, optionName, errMessage) {
   }
 }
 
+function validateNumberOption(errors, options, optionName, errMessage) {
+  if (
+    typeof options[optionName].value === 'undefined' ||
+    options[optionName] === null ||
+    options[optionName].value < 0
+  ) {
+    errors.push({
+      key: optionName,
+      message: errMessage
+    });
+  }
+}
+
 function validateOptions(options, cb) {
   let errors = [];
 
+  Logger.trace({ options }, 'Validate Options');
+
   validateStringOption(errors, options, 'host', '*required');
-  validateStringOption(errors, options, 'port', '*required');
+  validateNumberOption(errors, options, 'port', 'Port must be greater than or equal to 0');
   validateStringOption(errors, options, 'database', '*required');
   validateStringOption(errors, options, 'user', '*required');
   validateStringOption(errors, options, 'password', '*required');
