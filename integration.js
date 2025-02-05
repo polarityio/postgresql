@@ -139,12 +139,12 @@ function doLookup(entities, options, cb) {
   let lookupResults = [];
   let pool = getPool(options);
 
-  Logger.trace({ entities: entities }, 'doLookup');
+  Logger.trace({ entities, options }, 'doLookup');
 
   summaryMap = processAttributeOption(options.summaryAttributes);
   detailsMap = processAttributeOption(options.detailAttributes);
 
-  Logger.info({ summaryMap, detailsMap }, 'Maps');
+  Logger.trace({ summaryMap, detailsMap }, 'Maps');
 
   async.each(
     entities,
