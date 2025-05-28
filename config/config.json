@@ -6,6 +6,7 @@
   "description": "SQL Lookup for PostgreSQL databases",
   "entityTypes": [
     "IPv4",
+    "IPv4CIDR",
     "IPv6",
     "url",
     "domain",
@@ -13,7 +14,8 @@
     "MD5",
     "SHA1",
     "SHA256",
-    "email"
+    "email",
+    "MAC"
   ],
   "dataTypes": [
     "IPv4",
@@ -23,7 +25,19 @@
     "SHA256",
     "email",
     "domain",
-    "cve"
+    "cve",
+    {
+      "type": "MAC",
+      "enabled": false
+    },
+    {
+      "type": "url",
+      "enabled": false
+    },
+    {
+      "type": "IPv4CIDR",
+      "enabled": false
+    }
   ],
   "supportsAdditionalCustomTypes": true,
   "styles": [
