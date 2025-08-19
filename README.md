@@ -31,6 +31,10 @@ The user you want the integration to connect to your postgres database as.  We r
 
 The database password for the provided user above.
 
+#### Force SSL Connection
+
+If checked, the integration will connect via SSL to your PostgreSQL database. Your PostgreSQL instance must have SSL enabled for this option to work.
+
 #### Query
 
 The query you want to execute and return data for.

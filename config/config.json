@@ -65,7 +65,7 @@
     {
       "key": "host",
       "name": "Database Host",
-      "description": "The hostname of the server hosting your PostgreSQL Server instance",
+      "description": "The hostname of the server hosting your PostgreSQL Server instance.",
       "default": "",
       "type": "text",
       "userCanEdit": false,
@@ -110,7 +110,7 @@
     {
       "key": "ssl",
       "name": "Force SSL Connection",
-      "description": "If checked, the integration will connect via SSL to your PostgreSQL database.",
+      "description": "If checked, the integration will connect via SSL to your PostgreSQL database. Your PostgreSQL instance must have SSL enabled for this option to work.",
       "default": false,
       "type": "boolean",
       "userCanEdit": false,
