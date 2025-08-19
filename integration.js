@@ -10,18 +10,35 @@ let summaryMap = [];
 let detailsMap = [];
 
 function getPool(options) {
-  let optionString = options.host + options.user + options.port + options.password + options.database;
+  let optionString =
+    options.host +
+    options.user +
+    options.port +
+    options.password +
+    options.database +
+    options.ssl +
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED;
   if (poolSignature != optionString) {
     poolSignature = optionString;
 
-    _pool = new Pool({
+    const poolConfig = {
       connectionLimit: 10,
       host: options.host,
       user: options.user,
       port: options.port,
       password: options.password,
       database: options.database
-    });
+    };
+
+    if (options.ssl) {
+      poolConfig.ssl = {
+        rejectUnauthorized: process.env.NODE_TLS_REJECT_UNAUTHORIZED === '1' ? true : false
+      };
+    }
+    
+    Logger.trace({ poolConfig: { ...poolConfig, password: '********' } }, 'PostgreSQL Connection Pool Configuration');
+
+    _pool = new Pool(poolConfig);
   }
 
   return _pool;
@@ -188,7 +205,7 @@ function doLookup(entities, options, cb) {
       if (err) {
         Logger.error({ err: err, stack: err.stack }, 'Error Running Query');
         err = {
-          detail: 'Error Running Query',
+          detail: err.message ? err.message: 'Error Running Query',
           debug: {
             stack: err.stack,
             err: err

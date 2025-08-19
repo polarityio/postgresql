@@ -108,6 +108,15 @@
       "adminOnly": true
     },
     {
+      "key": "ssl",
+      "name": "Force SSL Connection",
+      "description": "If checked, the integration will connect via SSL to your PostgreSQL database.",
+      "default": false,
+      "type": "boolean",
+      "userCanEdit": false,
+      "adminOnly": true
+    },
+    {
       "key": "query",
       "name": "Query",
       "description": "The query you want to execute and return data for.  Replace the entity with \"$1\".  (e.g., SELECT * FROM data WHERE ip = $1).  Columns that appear as tags should be prefixed with \"tag\" (e.f., SELECT id as tag1, severity as tag2 FROM data WHERE ip = $1)",
